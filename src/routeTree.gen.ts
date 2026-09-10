@@ -12,8 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BattleRouteImport } from './routes/battle'
 import { Route as CampaignRouteImport } from './routes/campaign'
-import { Route as DuelAiRouteImport } from './routes/duel-ai'
-import { Route as DuelHumanRouteImport } from './routes/duel-human'
 import { Route as SeasonRouteImport } from './routes/season'
 import { Route as SquadRouteImport } from './routes/squad'
 
@@ -32,16 +30,6 @@ const CampaignRoute = CampaignRouteImport.update({
   path: '/campaign',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DuelAiRoute = DuelAiRouteImport.update({
-  id: '/duel-ai',
-  path: '/duel-ai',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DuelHumanRoute = DuelHumanRouteImport.update({
-  id: '/duel-human',
-  path: '/duel-human',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SeasonRoute = SeasonRouteImport.update({
   id: '/season',
   path: '/season',
@@ -57,8 +45,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
   '/campaign': typeof CampaignRoute
-  '/duel-ai': typeof DuelAiRoute
-  '/duel-human': typeof DuelHumanRoute
   '/season': typeof SeasonRoute
   '/squad': typeof SquadRoute
 }
@@ -66,8 +52,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
   '/campaign': typeof CampaignRoute
-  '/duel-ai': typeof DuelAiRoute
-  '/duel-human': typeof DuelHumanRoute
   '/season': typeof SeasonRoute
   '/squad': typeof SquadRoute
 }
@@ -76,47 +60,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
   '/campaign': typeof CampaignRoute
-  '/duel-ai': typeof DuelAiRoute
-  '/duel-human': typeof DuelHumanRoute
   '/season': typeof SeasonRoute
   '/squad': typeof SquadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/battle'
-    | '/campaign'
-    | '/duel-ai'
-    | '/duel-human'
-    | '/season'
-    | '/squad'
+  fullPaths: '/' | '/battle' | '/campaign' | '/season' | '/squad'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/battle'
-    | '/campaign'
-    | '/duel-ai'
-    | '/duel-human'
-    | '/season'
-    | '/squad'
-  id:
-    | '__root__'
-    | '/'
-    | '/battle'
-    | '/campaign'
-    | '/duel-ai'
-    | '/duel-human'
-    | '/season'
-    | '/squad'
+  to: '/' | '/battle' | '/campaign' | '/season' | '/squad'
+  id: '__root__' | '/' | '/battle' | '/campaign' | '/season' | '/squad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BattleRoute: typeof BattleRoute
   CampaignRoute: typeof CampaignRoute
-  DuelAiRoute: typeof DuelAiRoute
-  DuelHumanRoute: typeof DuelHumanRoute
   SeasonRoute: typeof SeasonRoute
   SquadRoute: typeof SquadRoute
 }
@@ -144,20 +102,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CampaignRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/duel-ai': {
-      id: '/duel-ai'
-      path: '/duel-ai'
-      fullPath: '/duel-ai'
-      preLoaderRoute: typeof DuelAiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/duel-human': {
-      id: '/duel-human'
-      path: '/duel-human'
-      fullPath: '/duel-human'
-      preLoaderRoute: typeof DuelHumanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/season': {
       id: '/season'
       path: '/season'
@@ -179,8 +123,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BattleRoute: BattleRoute,
   CampaignRoute: CampaignRoute,
-  DuelAiRoute: DuelAiRoute,
-  DuelHumanRoute: DuelHumanRoute,
   SeasonRoute: SeasonRoute,
   SquadRoute: SquadRoute,
 }

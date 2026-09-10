@@ -51,7 +51,7 @@ function SeasonScreen() {
     <DeskScene
       title="Season 3 · Rating"
       back={{ to: "/", label: "Menu" }}
-      hud={<TokenPill tokens={state.tokens} />}
+      hud={<TokenPill tokens={state.weird} />}
     >
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
@@ -142,7 +142,7 @@ function SeasonScreen() {
             ))}
           </div>
           <p className="mt-4 font-hand text-sm text-muted-foreground">
-            Rewards are drawn at the end of the quarter and posted straight into your sketchbook.
+            All season prizes are paid in Weird at the end of the quarter.
           </p>
         </aside>
       </div>

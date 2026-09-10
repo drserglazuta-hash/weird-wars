@@ -73,7 +73,7 @@ function LooseCard({ className, tint }: { className?: string; tint: string }) {
   );
 }
 
-type BackTo = "/" | "/campaign" | "/squad" | "/battle" | "/season" | "/duel-ai" | "/duel-human";
+type BackTo = "/" | "/campaign" | "/squad" | "/battle" | "/season";
 
 export function DeskScene({
   children,

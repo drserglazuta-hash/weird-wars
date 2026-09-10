@@ -60,7 +60,7 @@ function CampaignScreen() {
           <span className="sketch-border-alt bg-paper-shade px-3 py-1 font-hand text-sm">
             {state.unlockedLevels}/{CAMPAIGN_LEVELS.length} chapters woken
           </span>
-          <TokenPill tokens={state.tokens} />
+          <TokenPill tokens={state.weird} />
         </>
       }
     >
