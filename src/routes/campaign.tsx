@@ -4,7 +4,7 @@ import { DeskScene, SketchButton, TokenPill } from "@/components/game/DeskScene"
 import { CorruptionLayer } from "@/components/game/CorruptionLayer";
 import { EnemyArt } from "@/components/game/EnemyArt";
 import { CAMPAIGN_LEVELS, enemyDef } from "@/lib/game-data";
-import { setGameState, useGameState } from "@/lib/game-store";
+import { startRun, useGameState } from "@/lib/game-store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/campaign")({

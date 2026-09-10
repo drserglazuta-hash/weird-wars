@@ -79,15 +79,24 @@ export function resetProgression() {
   setGameState({ cardLevels: {}, shadowLevel: LEVEL_MIN, downed: [], runActive: false });
 }
 
-/** Entering a chapter locks the squad until the chapter ends. */
+/**
+ * Choosing a chapter/mode. Levelling and free squad editing are still open
+ * until the first battle of the run actually starts.
+ */
 export function startRun(mode: GameMode, levelId?: number) {
   setGameState((s) => ({
     mode,
     selectedLevel: levelId ?? s.selectedLevel,
-    runActive: mode !== "training",
+    runActive: false,
     downed: [],
     endlessWave: mode === "endless" ? 1 : s.endlessWave,
   }));
+}
+
+/** The chapter is now under way: the squad is locked until it ends. */
+export function lockRun(mode: GameMode) {
+  if (mode === "training") return;
+  setGameState({ runActive: true });
 }
 
 export function endRun() {
