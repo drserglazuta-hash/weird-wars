@@ -380,11 +380,17 @@ export const ENEMY_ROSTER: EnemyDef[] = [
   { id: "cross-out", name: "Cross-out", nameRu: "Зачёркиши", family: "stationery", behavior: "Rusher", ai: "rusher", attack: 23, health: 110, speed: 4, def: 8, range: 1, w: 1, h: 1, ability: "Lunges to cross a friend out." },
   { id: "stain", name: "Stain", nameRu: "Помарки", family: "stationery", behavior: "Swarm", ai: "swarm", attack: 15, health: 125, speed: 3, def: 10, range: 1, w: 1, h: 1, ability: "Soaks damage and keeps coming." },
   { id: "outline", name: "Outline", nameRu: "Обводки", family: "stationery", behavior: "Ranged", ai: "ranged", attack: 18, health: 80, speed: 7, def: 4, range: 3, w: 1, h: 1, ability: "Traces friends from a safe distance." },
+  { id: "ink-blob-boss", name: "Big Blob", nameRu: "Кляксища", family: "boss", behavior: "Boss", ai: "boss", attack: 14, health: 150, speed: 4, def: 5, range: 1, w: 1, h: 1, ability: "Splashes everyone standing next to it." },
+  { id: "pond-queen", name: "Pond Queen", nameRu: "Королева лужи", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 18, health: 220, speed: 4, def: 8, range: 2, w: 2, h: 1, ability: "Spits inky jets across two tiles." },
+  { id: "wax-gnawer", name: "Wax Gnawer", nameRu: "Воскогрыз", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 22, health: 260, speed: 6, def: 8, range: 1, w: 2, h: 1, ability: "Chews through crayon walls and friends." },
+  { id: "dune-crusher", name: "Dune Crusher", nameRu: "Дюнный стёр", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 24, health: 300, speed: 4, def: 11, range: 1, w: 2, h: 1, ability: "Rolls over friends and rubs them thin." },
+  { id: "fog-lord", name: "Fog Lord", nameRu: "Владыка тумана", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 28, health: 340, speed: 5, def: 13, range: 2, w: 2, h: 1, ability: "Drains colour from everything it touches." },
+  { id: "page-tearer", name: "Page Tearer", nameRu: "Рванина", family: "boss", behavior: "Boss · 4 cells", ai: "boss", attack: 32, health: 420, speed: 6, def: 14, range: 2, w: 2, h: 2, ability: "Rips the paper under the friends' feet." },
   { id: "great-stain", name: "Great Stain", nameRu: "Великая Помарка", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 26, health: 300, speed: 4, def: 12, range: 2, w: 2, h: 1, ability: "Every other turn it spreads across the row." },
   { id: "scribble-giant", name: "Scribble Giant", nameRu: "Каляка-Великан", family: "boss", behavior: "Boss · 3 cells", ai: "boss", attack: 30, health: 380, speed: 5, def: 12, range: 2, w: 1, h: 3, ability: "Sweeps everything standing in front of it." },
   { id: "blot-mother", name: "Blot Mother", nameRu: "Клякса-Мать", family: "boss", behavior: "Boss · 3 cells", ai: "boss", attack: 28, health: 420, speed: 4, def: 14, range: 2, w: 3, h: 1, ability: "Spawns a Blotling every second turn." },
   { id: "chief-eraser", name: "Chief Eraser", nameRu: "Главная Стирашка", family: "boss", behavior: "Boss · 4 cells", ai: "boss", attack: 35, health: 470, speed: 6, def: 16, range: 2, w: 2, h: 2, ability: "Erases two friends at once." },
-  { id: "klaksa", name: "The Blot", nameRu: "Клякса", family: "boss", behavior: "Final boss · 4 cells", ai: "boss", attack: 44, health: 650, speed: 5, def: 18, range: 2, w: 2, h: 2, ability: "Devours colour and swallows fallen drawings." },
+  { id: "klaksa", name: "The Blot", nameRu: "Клякса", family: "boss", behavior: "Final boss · 4 cells", ai: "boss", attack: 48, health: 720, speed: 5, def: 20, range: 2, w: 2, h: 2, ability: "Devours colour and swallows fallen drawings." },
 ];
 
 export function enemyDef(id: string) {
