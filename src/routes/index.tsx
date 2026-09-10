@@ -113,7 +113,7 @@ function MenuScreen() {
             <span className="sketch-border-alt bg-mint px-3 py-1 font-hand text-sm text-ink">
               {state.address}
             </span>
-            <TokenPill tokens={state.tokens} />
+            <TokenPill tokens={state.weird} />
           </>
         ) : null
       }
@@ -169,25 +169,25 @@ function MenuScreen() {
               }}
             />
             <ModeCard
-              title="Duel vs Human"
-              blurb="Real opponent, real mess."
+              title="Endless Waves"
+              blurb="Survive wave after wave for XP."
               tone="mint"
               icon={<DuelIcon />}
               disabled={!state.connected}
               onClick={() => {
-                setGameState({ mode: "human" });
-                navigate({ to: "/duel-human" });
+                startRun("endless");
+                navigate({ to: "/squad" });
               }}
             />
             <ModeCard
-              title="Duel vs AI"
-              blurb="Practise against the Blot brain."
+              title="Training"
+              blurb="No shadow, no rewards, no losses."
               tone="sky"
               icon={<BotIcon />}
               disabled={!state.connected}
               onClick={() => {
-                setGameState({ mode: "ai" });
-                navigate({ to: "/duel-ai" });
+                startRun("training");
+                navigate({ to: "/squad" });
               }}
             />
           </div>
