@@ -23,7 +23,7 @@ import {
   enemyTurn,
   useSpecial as applySpecial,
 } from "@/lib/combat";
-import { endRun, resetProgression, setGameState, useGameState } from "@/lib/game-store";
+import { endRun, lockRun, resetProgression, setGameState, useGameState } from "@/lib/game-store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/battle")({
@@ -62,6 +62,9 @@ function BattleScreen() {
     state.mode === "campaign" ? chapter.chapter : state.mode === "endless" ? `Wave ${state.endlessWave}` : "Training";
 
   const initialUnits = useMemo(() => [...buildFriends(state), ...buildEnemies(roster, scale)], []);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => lockRun(state.mode), []);
 
   const [units, setUnits] = useState<BattleUnit[]>(initialUnits);
   const [queue, setQueue] = useState<string[]>(() => buildQueue(initialUnits));
