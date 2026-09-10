@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { DeskScene, SketchButton, TokenPill } from "@/components/game/DeskScene";
-import { setGameState, useGameState } from "@/lib/game-store";
+import { setGameState, startRun, useGameState } from "@/lib/game-store";
 import { CREATURE_ART } from "@/lib/game-data";
 
 export const Route = createFileRoute("/")({

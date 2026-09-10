@@ -188,7 +188,7 @@ function CampaignScreen() {
               <SketchButton
                 tone="weird"
                 onClick={() => {
-                  setGameState({ selectedLevel: chapter.id, mode: "campaign" });
+                  startRun("campaign", chapter.id);
                   navigate({ to: "/squad" });
                 }}
               >
