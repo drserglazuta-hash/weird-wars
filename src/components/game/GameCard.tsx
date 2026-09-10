@@ -176,7 +176,7 @@ export function ShadowSlotCard({
             <p key={t.key} className="flex items-baseline justify-between gap-2 font-hand text-[11px] text-paper">
               <span>{t.label}</span>
               <span className="font-display text-[10px] font-bold text-sunshine">
-                {value} → +{Math.round((value / 30) * 100)}% {t.grantLabel}
+                {value} → +{(value / 30).toFixed(1)}% {t.grantLabel}
               </span>
             </p>
           );

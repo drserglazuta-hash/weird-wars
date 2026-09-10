@@ -229,7 +229,7 @@ function SquadScreen() {
                         {t.label} → {t.grantLabel}
                       </span>
                       <span className="font-display text-xs font-bold text-weird">
-                        {t.grants === "def" ? `+${aura.def} DEF` : `+${Math.round((value / 30) * 100)}%`}
+                        {t.grants === "def" ? `+${aura.def} DEF` : `+${(value / 30).toFixed(1)}%`}
                       </span>
                     </li>
                   );
