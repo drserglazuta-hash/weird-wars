@@ -99,7 +99,7 @@ export function GameCard({
           ❤ {hp}
         </span>
         <span className="sketch-border-alt flex-1 bg-paper-shade px-1 py-0.5 text-center font-display text-[10px] font-bold text-ink">
-          🛡 0
+          ◆ 0
         </span>
       </div>
 

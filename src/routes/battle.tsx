@@ -245,7 +245,7 @@ function BattleScreen() {
             {label} · Round {round}
           </span>
           <span className="sketch-border-alt bg-sky px-3 py-1 font-display text-sm font-bold text-ink">
-            🚶 Steps {isFriendTurn ? moveLeft : 0}
+            Steps {isFriendTurn ? moveLeft : 0}
           </span>
         </>
       }
@@ -345,7 +345,7 @@ function BattleScreen() {
                   <span className="absolute left-0.5 top-0.5 font-display text-[10px] font-bold text-ink">{u.hp}</span>
                   {u.shield > 0 && (
                     <span className="absolute right-0.5 top-0.5 font-display text-[10px] font-bold text-sky">
-                      🛡{u.shield}
+                      ◆{u.shield}
                     </span>
                   )}
                 </button>
@@ -360,12 +360,12 @@ function BattleScreen() {
               </h3>
               <p className="font-hand text-sm text-ink">
                 {active
-                  ? `⚔ ${active.atk} · ❤ ${active.hp}/${active.maxHp} · ⚡ ${active.spd} · 🛡 ${active.def + active.defBonus}`
+                  ? `⚔ ${active.atk} · ❤ ${active.hp}/${active.maxHp} · ⚡ ${active.spd} · ◆ ${active.def + active.defBonus}`
                   : "—"}
               </p>
               {active && (
                 <p className="font-hand text-xs text-muted-foreground">
-                  ✦ MAG {active.mag} · ◎ AURA {active.aura} · ✸ CRT {active.crt}% · 🍀 LCK {active.lck}
+                  ✦ MAG {active.mag} · ◎ AURA {active.aura} · ✸ CRT {active.crt}% · ◈ LCK {active.lck}
                 </p>
               )}
               <p className="mt-1 font-hand text-xs text-muted-foreground">

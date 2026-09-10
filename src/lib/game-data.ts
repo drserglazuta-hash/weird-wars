@@ -29,7 +29,7 @@ export const STAT_META: { key: StatKey; short: string; label: string; trait: str
   { key: "mag", short: "MAG", label: "Magic", trait: "Intellect", icon: "✦" },
   { key: "aura", short: "AURA", label: "Aura", trait: "Charisma", icon: "◎" },
   { key: "crt", short: "CRT", label: "Crit chance", trait: "Weirdness", icon: "✸" },
-  { key: "lck", short: "LCK", label: "Luck", trait: "Luck", icon: "🍀" },
+  { key: "lck", short: "LCK", label: "Luck", trait: "Luck", icon: "◈" },
 ];
 
 export function hpFromStrength(strength: number) {
