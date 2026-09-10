@@ -318,7 +318,7 @@ function SquadScreen() {
                       <dd>
                         {detailStats[m.key]}
                         {aura.pct[m.key] > 0 && (
-                          <span className="ml-1 text-xs text-weird">+{Math.round(aura.pct[m.key] * 100)}%</span>
+                          <span className="ml-1 text-xs text-weird">+{(aura.pct[m.key] * 100).toFixed(1)}%</span>
                         )}
                       </dd>
                     </div>
