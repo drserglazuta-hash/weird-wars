@@ -1,0 +1,248 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Weird Wars design system — a children's sketchbook on a wooden desk.
+ * All colors are semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Weird Wars palette */
+  --color-paper: var(--paper);
+  --color-paper-shade: var(--paper-shade);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-weird: var(--weird);
+  --color-weird-soft: var(--weird-soft);
+  --color-coral: var(--coral);
+  --color-sunshine: var(--sunshine);
+  --color-mint: var(--mint);
+  --color-sky: var(--sky);
+  --color-wood: var(--wood);
+  --color-wood-dark: var(--wood-dark);
+  --color-blot: var(--blot);
+  --color-graphite: var(--graphite);
+  --color-stain-green: var(--stain-green);
+  --color-eraser-pink: var(--eraser-pink);
+
+  --font-display: "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --font-hand: "Patrick Hand", ui-rounded, system-ui, sans-serif;
+
+  --animate-wobble: wobble 5s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pop: pop 0.35s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+  --animate-scribble: scribble 1.4s ease-in-out infinite;
+}
+
+:root {
+  --radius: 0.9rem;
+
+  --paper: #faf7f0;
+  --paper-shade: #f0e9dc;
+  --ink: #1f2a44;
+  --ink-soft: #5b6478;
+  --weird: #6c5ce7;
+  --weird-soft: #cfc7fb;
+  --coral: #ff7a5c;
+  --sunshine: #ffd166;
+  --mint: #7be0ad;
+  --sky: #7ec8f2;
+  --wood: #c08a4e;
+  --wood-dark: #8b5e34;
+  --blot: #241f33;
+  --graphite: #61616a;
+  --stain-green: #87b97c;
+  --eraser-pink: #ef9aa8;
+  --eye-glow: #ffd166;
+
+  --background: var(--wood-dark);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--weird);
+  --primary-foreground: var(--paper);
+  --secondary: var(--sunshine);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-shade);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--coral);
+  --accent-foreground: var(--paper);
+  --destructive: #d64545;
+  --destructive-foreground: var(--paper);
+  --border: #d9cfbc;
+  --input: #d9cfbc;
+  --ring: var(--weird);
+}
+
+.dark {
+  --background: #16121f;
+  --foreground: var(--paper);
+  --card: #201a2e;
+  --card-foreground: var(--paper);
+  --popover: #201a2e;
+  --popover-foreground: var(--paper);
+  --muted: #2c2440;
+  --muted-foreground: #b8b0cc;
+  --border: #3a3150;
+  --input: #3a3150;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-0.6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0.7deg) translateY(-2px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotate(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes scribble {
+  0%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 14;
+  }
+}
+
+@keyframes page-turn-next {
+  0% { opacity: 0.25; transform: perspective(1000px) rotateY(-14deg) translateX(18px); }
+  100% { opacity: 1; transform: perspective(1000px) rotateY(0) translateX(0); }
+}
+
+@keyframes page-turn-prev {
+  0% { opacity: 0.25; transform: perspective(1000px) rotateY(14deg) translateX(-18px); }
+  100% { opacity: 1; transform: perspective(1000px) rotateY(0) translateX(0); }
+}
+
+@utility animate-page-next { animation: page-turn-next 0.42s cubic-bezier(.2,.75,.25,1) both; }
+@utility animate-page-prev { animation: page-turn-prev 0.42s cubic-bezier(.2,.75,.25,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-next, .animate-page-prev, .animate-wobble, .animate-float { animation: none; }
+}
+
+/* Wobbly hand-drawn border using irregular radii */
+@utility sketch-border {
+  border: 2.5px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+@utility sketch-border-alt {
+  border: 2.5px solid var(--ink);
+  border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
+}
+
+@utility paper-grain {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(31, 42, 68, 0.035) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(31, 42, 68, 0.03) 0 1px, transparent 1px);
+  background-size:
+    7px 7px,
+    11px 11px;
+}
+
+@utility desk-wood {
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(
+      92deg,
+      rgba(90, 55, 25, 0.16) 0px,
+      rgba(90, 55, 25, 0.16) 2px,
+      transparent 2px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      88deg,
+      rgba(255, 235, 200, 0.09) 0px,
+      rgba(255, 235, 200, 0.09) 1px,
+      transparent 1px,
+      transparent 23px
+    ),
+    radial-gradient(ellipse at 50% 40%, #cf9a5d 0%, #8b5e34 100%);
+}
+
+@utility ink-shadow {
+  box-shadow: 4px 5px 0 rgba(31, 42, 68, 0.85);
+}
+
+@utility ink-shadow-sm {
+  box-shadow: 2px 3px 0 rgba(31, 42, 68, 0.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-hand);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
