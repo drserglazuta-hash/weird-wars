@@ -135,6 +135,11 @@ function CampaignScreen() {
               {chapter.stops.map((s, i) => {
                 const wobble = ((i * 37 + chapter.id * 13) % 9) - 4; // -4..4° tilt, deterministic
                 const last = i === chapter.stops.length - 1;
+                // keep the flag inside the 100-wide viewBox — fold it left near the right edge
+                const flipFlag = s.x > 91;
+                const flag = flipFlag
+                  ? `M ${s.x} ${s.y - 1.6} q -0.4 -3 0.3 -6.4 l -6.2 1.6 l 5.9 2.4`
+                  : `M ${s.x} ${s.y - 1.6} q 0.4 -3 -0.3 -6.4 l 6.2 1.6 l -5.9 2.4`;
                 return (
                   <g key={i} transform={`rotate(${wobble} ${s.x} ${s.y})`}>
                     <path
@@ -144,7 +149,7 @@ function CampaignScreen() {
                       strokeWidth="0.55"
                     />
                     <path
-                      d={`M ${s.x} ${s.y - 1.6} q 0.4 -3 -0.3 -6.4 l 6.2 1.6 l -5.9 2.4`}
+                      d={flag}
                       fill={last ? "var(--weird)" : "var(--coral)"}
                       stroke="var(--ink)"
                       strokeWidth="0.55"
@@ -168,6 +173,11 @@ function CampaignScreen() {
                     className="sketch-border-alt flex w-[104px] flex-col items-center gap-1 bg-paper-shade/80 p-2"
                   >
                     <EnemyArt id={e.id} title={e.name} className="h-14 w-14" />
+                    {e.family === "boss" && (
+                      <span className="bg-weird px-1.5 py-0.5 font-display text-[9px] font-bold text-paper">
+                        BOSS
+                      </span>
+                    )}
                     <p className="text-center font-display text-xs font-bold leading-tight text-ink">{e.name}</p>
                     <p className="text-center font-hand text-[11px] leading-tight text-ink-soft">{e.nameRu}</p>
                     <p className="font-hand text-[11px] text-ink">
