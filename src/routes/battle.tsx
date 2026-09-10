@@ -21,8 +21,8 @@ import {
   outcomeOf,
   canStand,
   enemyTurn,
-  useSpecialSafe,
-} from "@/lib/battle-engine";
+  useSpecial as applySpecial,
+} from "@/lib/combat";
 import { endRun, resetProgression, setGameState, useGameState } from "@/lib/game-store";
 import { cn } from "@/lib/utils";
 
@@ -166,7 +166,7 @@ function BattleScreen() {
 
   const doSpecial = () => {
     if (outcome || !active || !isFriendTurn) return;
-    const r = useSpecialSafe(units, active.key);
+    const r = applySpecial(units, active.key);
     pushLog(r.log);
     advance(r.units);
   };
