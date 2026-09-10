@@ -140,9 +140,13 @@ function dodged(target: BattleUnit) {
 /* ---------------- building the battlefield ---------------- */
 
 export function buildFriends(state: GameState): BattleUnit[] {
+  // Training runs without the shadow, so no aura and no armour.
+  const practice = state.mode === "training";
   const shadow = shadowCard(state.commander);
-  const aura = shadowAura(shadow, state.shadowLevel);
-  const mvDef = multiverseDef(state.multiverse);
+  const aura = practice
+    ? { pct: { atk: 0, spd: 0, mag: 0, aura: 0, crt: 0, lck: 0 }, def: 0 }
+    : shadowAura(shadow, state.shadowLevel);
+  const mvDef = practice ? 0 : multiverseDef(state.multiverse);
 
   const picked = state.squad
     .filter((id): id is string => Boolean(id) && !state.downed.includes(id as string))

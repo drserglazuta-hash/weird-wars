@@ -78,3 +78,52 @@ export function levelOf(s: GameState, id: string) {
 export function resetProgression() {
   setGameState({ cardLevels: {}, shadowLevel: LEVEL_MIN, downed: [], runActive: false });
 }
+
+/**
+ * Choosing a chapter/mode. Levelling and free squad editing are still open
+ * until the first battle of the run actually starts.
+ */
+export function startRun(mode: GameMode, levelId?: number) {
+  setGameState((s) => ({
+    mode,
+    selectedLevel: levelId ?? s.selectedLevel,
+    runActive: false,
+    downed: [],
+    endlessWave: mode === "endless" ? 1 : s.endlessWave,
+  }));
+}
+
+/** The chapter is now under way: the squad is locked until it ends. */
+export function lockRun(mode: GameMode) {
+  if (mode === "training") return;
+  setGameState({ runActive: true });
+}
+
+export function endRun() {
+  setGameState({ runActive: false, downed: [] });
+}
+
+/** Pay 25 × level Weird to bring a downed friend back inside a chapter. */
+export function reviveFriend(id: string, cost: number) {
+  setGameState((s) =>
+    s.weird < cost || !s.downed.includes(id)
+      ? {}
+      : { weird: s.weird - cost, downed: s.downed.filter((d) => d !== id) },
+  );
+}
+
+/**
+ * Inside a chapter a downed friend may be replaced by another friend from the
+ * inventory. The replaced friend stays dead for the rest of the chapter.
+ */
+export function replaceDowned(deadId: string, newId: string) {
+  setGameState((s) => {
+    if (!s.downed.includes(deadId)) return {};
+    if (s.squad.includes(newId) || s.downed.includes(newId)) return {};
+    const slot = s.squad.indexOf(deadId);
+    if (slot === -1) return {};
+    const squad = [...s.squad];
+    squad[slot] = newId;
+    return { squad };
+  });
+}

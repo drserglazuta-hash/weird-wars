@@ -4,7 +4,7 @@ import { DeskScene, SketchButton, TokenPill } from "@/components/game/DeskScene"
 import { CorruptionLayer } from "@/components/game/CorruptionLayer";
 import { EnemyArt } from "@/components/game/EnemyArt";
 import { CAMPAIGN_LEVELS, enemyDef } from "@/lib/game-data";
-import { setGameState, useGameState } from "@/lib/game-store";
+import { startRun, useGameState } from "@/lib/game-store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/campaign")({
@@ -60,7 +60,7 @@ function CampaignScreen() {
           <span className="sketch-border-alt bg-paper-shade px-3 py-1 font-hand text-sm">
             {state.unlockedLevels}/{CAMPAIGN_LEVELS.length} chapters woken
           </span>
-          <TokenPill tokens={state.tokens} />
+          <TokenPill tokens={state.weird} />
         </>
       }
     >
@@ -188,7 +188,7 @@ function CampaignScreen() {
               <SketchButton
                 tone="weird"
                 onClick={() => {
-                  setGameState({ selectedLevel: chapter.id, mode: "campaign" });
+                  startRun("campaign", chapter.id);
                   navigate({ to: "/squad" });
                 }}
               >
