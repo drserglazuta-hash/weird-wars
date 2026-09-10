@@ -245,13 +245,13 @@ export const SHADOW_COMMANDERS: ShadowCard[] = [
     color: "weird",
     art: shadowArt,
     traits: {
-      power: 12,
-      shadownimbleness: 8,
-      umbramind: 15,
-      shadowIllusions: 9,
-      transformation: 6,
-      energyExtraction: 10,
-      emotionAbsorption: 7,
+      power: 240,
+      shadownimbleness: 160,
+      umbramind: 300,
+      shadowIllusions: 180,
+      transformation: 120,
+      energyExtraction: 200,
+      emotionAbsorption: 140,
     },
     flavor: "Lives between the pages. Never steps onto one.",
   },
@@ -263,13 +263,13 @@ export const SHADOW_COMMANDERS: ShadowCard[] = [
     color: "weird",
     art: shadowArt,
     traits: {
-      power: 7,
-      shadownimbleness: 16,
-      umbramind: 11,
-      shadowIllusions: 14,
-      transformation: 12,
-      energyExtraction: 5,
-      emotionAbsorption: 13,
+      power: 140,
+      shadownimbleness: 310,
+      umbramind: 220,
+      shadowIllusions: 280,
+      transformation: 240,
+      energyExtraction: 100,
+      emotionAbsorption: 260,
     },
     flavor: "Never speaks above a whisper.",
   },
@@ -279,9 +279,13 @@ export function shadowCard(id: string | null) {
   return SHADOW_COMMANDERS.find((c) => c.id === id) ?? null;
 }
 
-/** Aura bonus fraction for a trait value: trait / 30. */
+/**
+ * Aura bonus fraction for a trait value: (trait / 30) / 100.
+ * The displayed percent is trait / 30 (e.g. trait 123 → +4.1%), so the
+ * multiplier applied to a stat is stat × (1 + (trait / 30) / 100).
+ */
 export function auraFraction(trait: number) {
-  return trait / 30;
+  return trait / 30 / 100;
 }
 
 export type AuraBundle = {
@@ -297,7 +301,8 @@ export function shadowAura(shadow: ShadowCard | null, level: number): AuraBundle
   let def = 0;
   for (const t of SHADOW_TRAITS) {
     const value = statAtLevel(shadow.traits[t.key], level);
-    if (t.grants === "def") def = Math.round(auraFraction(value) * 10);
+    // Energy extraction grants flat DEF equal to its percent figure (trait / 30).
+    if (t.grants === "def") def = Math.round(value / 30);
     else pct[t.grants] = auraFraction(value);
   }
   return { pct, def };

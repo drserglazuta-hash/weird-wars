@@ -229,7 +229,7 @@ function SquadScreen() {
                         {t.label} → {t.grantLabel}
                       </span>
                       <span className="font-display text-xs font-bold text-weird">
-                        {t.grants === "def" ? `+${aura.def} DEF` : `+${Math.round((value / 30) * 100)}%`}
+                        {t.grants === "def" ? `+${aura.def} DEF` : `+${(value / 30).toFixed(1)}%`}
                       </span>
                     </li>
                   );
@@ -318,7 +318,7 @@ function SquadScreen() {
                       <dd>
                         {detailStats[m.key]}
                         {aura.pct[m.key] > 0 && (
-                          <span className="ml-1 text-xs text-weird">+{Math.round(aura.pct[m.key] * 100)}%</span>
+                          <span className="ml-1 text-xs text-weird">+{(aura.pct[m.key] * 100).toFixed(1)}%</span>
                         )}
                       </dd>
                     </div>
