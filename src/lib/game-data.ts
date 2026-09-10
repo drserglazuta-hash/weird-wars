@@ -380,11 +380,17 @@ export const ENEMY_ROSTER: EnemyDef[] = [
   { id: "cross-out", name: "Cross-out", nameRu: "Зачёркиши", family: "stationery", behavior: "Rusher", ai: "rusher", attack: 23, health: 110, speed: 4, def: 8, range: 1, w: 1, h: 1, ability: "Lunges to cross a friend out." },
   { id: "stain", name: "Stain", nameRu: "Помарки", family: "stationery", behavior: "Swarm", ai: "swarm", attack: 15, health: 125, speed: 3, def: 10, range: 1, w: 1, h: 1, ability: "Soaks damage and keeps coming." },
   { id: "outline", name: "Outline", nameRu: "Обводки", family: "stationery", behavior: "Ranged", ai: "ranged", attack: 18, health: 80, speed: 7, def: 4, range: 3, w: 1, h: 1, ability: "Traces friends from a safe distance." },
+  { id: "ink-blob-boss", name: "Big Blob", nameRu: "Кляксища", family: "boss", behavior: "Boss", ai: "boss", attack: 14, health: 150, speed: 4, def: 5, range: 1, w: 1, h: 1, ability: "Splashes everyone standing next to it." },
+  { id: "pond-queen", name: "Pond Queen", nameRu: "Королева лужи", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 18, health: 220, speed: 4, def: 8, range: 2, w: 2, h: 1, ability: "Spits inky jets across two tiles." },
+  { id: "wax-gnawer", name: "Wax Gnawer", nameRu: "Воскогрыз", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 22, health: 260, speed: 6, def: 8, range: 1, w: 2, h: 1, ability: "Chews through crayon walls and friends." },
+  { id: "dune-crusher", name: "Dune Crusher", nameRu: "Дюнный стёр", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 24, health: 300, speed: 4, def: 11, range: 1, w: 2, h: 1, ability: "Rolls over friends and rubs them thin." },
+  { id: "fog-lord", name: "Fog Lord", nameRu: "Владыка тумана", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 28, health: 340, speed: 5, def: 13, range: 2, w: 2, h: 1, ability: "Drains colour from everything it touches." },
+  { id: "page-tearer", name: "Page Tearer", nameRu: "Рванина", family: "boss", behavior: "Boss · 4 cells", ai: "boss", attack: 32, health: 420, speed: 6, def: 14, range: 2, w: 2, h: 2, ability: "Rips the paper under the friends' feet." },
   { id: "great-stain", name: "Great Stain", nameRu: "Великая Помарка", family: "boss", behavior: "Boss · 2 cells", ai: "boss", attack: 26, health: 300, speed: 4, def: 12, range: 2, w: 2, h: 1, ability: "Every other turn it spreads across the row." },
   { id: "scribble-giant", name: "Scribble Giant", nameRu: "Каляка-Великан", family: "boss", behavior: "Boss · 3 cells", ai: "boss", attack: 30, health: 380, speed: 5, def: 12, range: 2, w: 1, h: 3, ability: "Sweeps everything standing in front of it." },
   { id: "blot-mother", name: "Blot Mother", nameRu: "Клякса-Мать", family: "boss", behavior: "Boss · 3 cells", ai: "boss", attack: 28, health: 420, speed: 4, def: 14, range: 2, w: 3, h: 1, ability: "Spawns a Blotling every second turn." },
   { id: "chief-eraser", name: "Chief Eraser", nameRu: "Главная Стирашка", family: "boss", behavior: "Boss · 4 cells", ai: "boss", attack: 35, health: 470, speed: 6, def: 16, range: 2, w: 2, h: 2, ability: "Erases two friends at once." },
-  { id: "klaksa", name: "The Blot", nameRu: "Клякса", family: "boss", behavior: "Final boss · 4 cells", ai: "boss", attack: 44, health: 650, speed: 5, def: 18, range: 2, w: 2, h: 2, ability: "Devours colour and swallows fallen drawings." },
+  { id: "klaksa", name: "The Blot", nameRu: "Клякса", family: "boss", behavior: "Final boss · 4 cells", ai: "boss", attack: 48, health: 720, speed: 5, def: 20, range: 2, w: 2, h: 2, ability: "Devours colour and swallows fallen drawings." },
 ];
 
 export function enemyDef(id: string) {
@@ -455,7 +461,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0,
     trail: "M 8 50 Q 26 34 42 46 Q 58 58 74 40 Q 86 28 94 34",
     stops: [{ x: 8, y: 50 }, { x: 25, y: 41 }, { x: 42, y: 46 }, { x: 74, y: 40 }, { x: 94, y: 34 }],
-    encounter: ["blotling", "blotling"],
+    encounter: ["blotling", "blotling", "ink-blob-boss"],
   },
   {
     id: 2,
@@ -469,7 +475,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.12,
     trail: "M 6 20 Q 22 44 40 26 Q 56 10 70 32 Q 84 52 96 44",
     stops: [{ x: 6, y: 20 }, { x: 24, y: 38 }, { x: 40, y: 26 }, { x: 70, y: 32 }, { x: 96, y: 44 }],
-    encounter: ["blotling", "blotling", "smudge"],
+    encounter: ["blotling", "blotling", "smudge", "pond-queen"],
   },
   {
     id: 3,
@@ -483,7 +489,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.22,
     trail: "M 10 54 L 24 24 L 38 52 L 52 22 L 66 50 Q 82 36 94 48",
     stops: [{ x: 10, y: 54 }, { x: 24, y: 24 }, { x: 38, y: 52 }, { x: 66, y: 50 }, { x: 94, y: 48 }],
-    encounter: ["scribble", "scribble", "squiggle"],
+    encounter: ["scribble", "squiggle", "wax-gnawer"],
   },
   {
     id: 4,
@@ -497,7 +503,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.34,
     trail: "M 5 44 Q 20 20 34 44 Q 48 66 62 42 Q 76 18 96 38",
     stops: [{ x: 5, y: 44 }, { x: 20, y: 32 }, { x: 34, y: 44 }, { x: 62, y: 42 }, { x: 96, y: 38 }],
-    encounter: ["eraser-enemy", "hatch", "blotling", "smudge"],
+    encounter: ["eraser-enemy", "hatch", "smudge", "dune-crusher"],
   },
   {
     id: 5,
@@ -511,7 +517,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.44,
     trail: "M 8 34 Q 30 52 46 30 Q 62 8 78 34 Q 88 50 96 30",
     stops: [{ x: 8, y: 34 }, { x: 28, y: 44 }, { x: 46, y: 30 }, { x: 78, y: 34 }, { x: 96, y: 30 }],
-    encounter: ["great-stain", "splatter", "blotling"],
+    encounter: ["splatter", "blotling", "great-stain"],
   },
   {
     id: 6,
@@ -525,7 +531,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.55,
     trail: "M 4 50 Q 18 28 32 46 Q 46 62 58 40 Q 72 16 84 40 Q 92 54 98 42",
     stops: [{ x: 4, y: 50 }, { x: 18, y: 34 }, { x: 32, y: 46 }, { x: 58, y: 40 }, { x: 98, y: 42 }],
-    encounter: ["gray", "dot", "dot", "outline"],
+    encounter: ["gray", "dot", "outline", "fog-lord"],
   },
   {
     id: 7,
@@ -539,7 +545,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.66,
     trail: "M 6 26 L 20 50 L 34 24 Q 52 44 64 24 Q 80 44 96 26",
     stops: [{ x: 6, y: 26 }, { x: 20, y: 50 }, { x: 34, y: 24 }, { x: 64, y: 24 }, { x: 96, y: 26 }],
-    encounter: ["scribble-giant", "scribble", "hatch"],
+    encounter: ["scribble", "hatch", "scribble-giant"],
   },
   {
     id: 8,
@@ -553,7 +559,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.76,
     trail: "M 8 46 Q 22 18 38 40 L 52 18 Q 68 44 80 22 Q 90 40 96 24",
     stops: [{ x: 8, y: 46 }, { x: 22, y: 26 }, { x: 38, y: 40 }, { x: 80, y: 22 }, { x: 96, y: 24 }],
-    encounter: ["cross-out", "cross-out", "stain", "outline"],
+    encounter: ["cross-out", "stain", "outline", "page-tearer"],
   },
   {
     id: 9,
@@ -567,7 +573,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 0.87,
     trail: "M 5 30 Q 24 54 40 30 Q 56 6 72 32 Q 84 52 96 34",
     stops: [{ x: 5, y: 30 }, { x: 22, y: 46 }, { x: 40, y: 30 }, { x: 72, y: 32 }, { x: 96, y: 34 }],
-    encounter: ["chief-eraser", "eraser-enemy", "eraser-enemy", "dot"],
+    encounter: ["eraser-enemy", "eraser-enemy", "dot", "chief-eraser"],
   },
   {
     id: 10,
@@ -581,7 +587,7 @@ export const CAMPAIGN_LEVELS: CampaignLevel[] = [
     corruption: 1,
     trail: "M 6 44 Q 18 16 32 40 Q 44 60 56 34 Q 70 10 82 38 Q 90 56 98 40",
     stops: [{ x: 6, y: 44 }, { x: 19, y: 28 }, { x: 32, y: 40 }, { x: 56, y: 34 }, { x: 98, y: 40 }],
-    encounter: ["klaksa", "blot-mother", "splatter", "blotling"],
+    encounter: ["blot-mother", "splatter", "blotling", "klaksa"],
   },
 ];
 
