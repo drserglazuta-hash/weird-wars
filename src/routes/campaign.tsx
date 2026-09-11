@@ -135,11 +135,9 @@ function CampaignScreen() {
               {chapter.stops.map((s, i) => {
                 const wobble = ((i * 37 + chapter.id * 13) % 9) - 4; // -4..4° tilt, deterministic
                 const last = i === chapter.stops.length - 1;
-                // keep the flag inside the 100-wide viewBox — fold it left near the right edge
-                const flipFlag = s.x > 91;
-                const flag = flipFlag
-                  ? `M ${s.x} ${s.y - 1.6} q -0.4 -3 0.3 -6.4 l -6.2 1.6 l 5.9 2.4`
-                  : `M ${s.x} ${s.y - 1.6} q 0.4 -3 -0.3 -6.4 l 6.2 1.6 l -5.9 2.4`;
+                // nudge the last flag left so the bigger flag fits without flipping direction
+                const fx = Math.min(s.x, 88);
+                const flag = `M ${fx} ${s.y - 1.6} q 0.5 -4 -0.4 -8 l 8 2.2 l -7.5 2.8`;
                 return (
                   <g key={i} transform={`rotate(${wobble} ${s.x} ${s.y})`}>
                     <path
