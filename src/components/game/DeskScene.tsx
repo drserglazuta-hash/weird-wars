@@ -149,7 +149,7 @@ export function TokenPill({ tokens }: { tokens: number }) {
         <circle cx="12" cy="12" r="9" fill="#FF7A5C" stroke="#1F2A44" strokeWidth="2.5" />
         <path d="M9 12h6" stroke="#1F2A44" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
-      {tokens.toLocaleString()}
+      {String(tokens).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
     </span>
   );
 }

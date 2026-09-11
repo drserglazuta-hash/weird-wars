@@ -42,6 +42,11 @@ function CampaignScreen() {
   const chapter = CAMPAIGN_LEVELS[page]!;
   const unlocked = chapter.id <= state.unlockedLevels;
   const cleared = chapter.id < state.unlockedLevels;
+  const finalStop = chapter.stops[chapter.stops.length - 1];
+  const finalFlagX = finalStop ? Math.min(finalStop.x, 88) : 88;
+  const trailPath = finalStop
+    ? chapter.trail.replace(new RegExp(`${finalStop.x} ${finalStop.y}$`), `${finalFlagX} ${finalStop.y}`)
+    : chapter.trail;
 
   const go = (dir: "next" | "prev") => {
     const target = dir === "next" ? page + 1 : page - 1;
@@ -124,7 +129,7 @@ function CampaignScreen() {
           <div className="relative mt-4">
             <svg viewBox="-4 -6 108 72" className="h-[210px] w-full md:h-[280px]" preserveAspectRatio="none">
               <path
-                d={chapter.trail}
+                d={trailPath}
                 fill="none"
                 stroke="var(--wood-dark)"
                 strokeWidth="1.2"
@@ -135,15 +140,15 @@ function CampaignScreen() {
               {chapter.stops.map((s, i) => {
                 const wobble = ((i * 37 + chapter.id * 13) % 9) - 4; // -4..4° tilt, deterministic
                 const last = i === chapter.stops.length - 1;
-                // nudge the last flag left so the bigger flag fits without flipping direction
-                const fx = Math.min(s.x, 88);
+                // Move the whole final marker left so its dot, trail and larger flag stay connected.
+                const fx = last ? finalFlagX : s.x;
                 const flag = last
                   ? `M ${fx} ${s.y - 2} q 0.8 -5 -0.6 -10 l 10 3 l -9.5 3.5`
                   : `M ${fx} ${s.y - 1.6} q 0.5 -4 -0.4 -8 l 8 2.2 l -7.5 2.8`;
                 return (
-                  <g key={i} transform={`rotate(${wobble} ${s.x} ${s.y})`}>
+                  <g key={i} transform={`rotate(${wobble} ${fx} ${s.y})`}>
                     <path
-                      d={`M ${s.x - 2.1} ${s.y + 0.2} q 2 -1.8 4.2 0.1 q 2.1 1.6 0 3.3 q -2.2 1.7 -4.2 -0.2 q -1.9 -1.8 0 -3.2 Z`}
+                      d={`M ${fx - 2.1} ${s.y + 0.2} q 2 -1.8 4.2 0.1 q 2.1 1.6 0 3.3 q -2.2 1.7 -4.2 -0.2 q -1.9 -1.8 0 -3.2 Z`}
                       fill={last ? "var(--weird)" : "var(--sunshine)"}
                       stroke="var(--ink)"
                       strokeWidth="0.55"
